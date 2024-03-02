@@ -8,13 +8,14 @@
 */
 int rb_tree_is_valid(const rb_tree_t *tree)
 {
-	int rv = 0;
-
 	if (tree)
 	{
-		rv = rec_rbtv(tree) * rec_bst(tree);
+		if (rec_rbtv(tree) && rec_bst(tree) && rec_abn(tree))
+			return (1);
+		else
+			return (0);
 	}
-	return (rv);
+	return (0);
 }
 
 
