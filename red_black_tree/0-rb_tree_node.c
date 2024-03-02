@@ -17,7 +17,10 @@ rb_tree_t *rb_tree_node(rb_tree_t *parent, int value, rb_color_t color)
 	{
 		nn->n = value;
 		nn->parent = parent;
-		nn->color = color;
+		if ((color == RED) && (parent->color == RED))
+			nn->color = BLACK;
+		else
+			nn->color = color;
 		nn->left = NULL;
 		nn->right = NULL;
 	}
