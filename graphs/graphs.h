@@ -4,6 +4,7 @@
 
 /* Libraries */
 	#include <stdio.h>
+	#include <stdlib.h>
 
 
 /* Structures */
