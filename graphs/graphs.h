@@ -5,6 +5,7 @@
 /* Libraries */
 	#include <stdio.h>
 	#include <stdlib.h>
+	#include <string.h>
 
 
 /* Structures */
@@ -74,6 +75,10 @@
 
 /* Functions */
 	graph_t *graph_create(void);
+
+	vertex_t *graph_add_vertex(graph_t *graph, const char *str);
+	vertex_t *add_rec_vertex(vertex_t *vertex, size_t index, const char *str);
+	vertex_t *create_vertex(size_t index, const char *str);
 
 
 #endif
