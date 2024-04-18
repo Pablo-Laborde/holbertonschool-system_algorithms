@@ -18,7 +18,11 @@ vertex_t *graph_add_vertex(graph_t *graph, const char *str)
 			index = graph->vertices->index;
 		vertex = add_rec_vertex(graph->vertices, index, str);
 		if (!graph->vertices)
+		{
 			graph->vertices = vertex;
+			graph->nb_vertices = 0;
+		}
+		graph->nb_vertices++;
 	}
 	return (vertex);
 }
