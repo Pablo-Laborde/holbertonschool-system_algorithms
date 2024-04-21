@@ -62,7 +62,7 @@ size_t rec_traverse(vertex_t *vx
 				if (a > b)
 					b = a;
 			}
-			return (b > dp) ? b : dp;
+			return ((b > dp) ? b : dp);
 		}
 	}
 	return (0);
