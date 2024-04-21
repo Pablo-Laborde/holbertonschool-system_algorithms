@@ -51,6 +51,7 @@ int main(void)
     }
 
     graph_display(graph);
+    graph_delete(graph);
 
     return (EXIT_SUCCESS);
 }

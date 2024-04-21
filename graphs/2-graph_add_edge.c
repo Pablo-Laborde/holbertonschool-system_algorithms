@@ -13,25 +13,15 @@ int graph_add_edge(graph_t *graph, const char *src
 			, const char *dest, edge_type_t type)
 {
 	vertex_t *d = NULL, *s = NULL;
-	edge_t *one = NULL, *two = NULL;
 
 	if (graph && src && dest)
 	{
 		s = get_vertex(graph->vertices, src);
 		d = get_vertex(graph->vertices, dest);
-		if (!d && !s)
+		if (!d || !s)
 			return (0);
-		one = malloc(sizeof(edge_t));
-		if (type)
-			two = malloc(sizeof(edge_t));
-		if (!one || (type && !two))
-		{
-			free(one);
-			free(two);
-			return (0);
-		}
 		s->edges = ca_edge(s->edges, d);
-		if (two)
+		if (type)
 			d->edges = ca_edge(d->edges, s);
 		return (1);
 	}
