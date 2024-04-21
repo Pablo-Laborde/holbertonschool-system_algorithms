@@ -84,5 +84,9 @@
 	vertex_t *get_vertex(vertex_t *vertex, const char *str);
 	edge_t *ca_edge(edge_t *list, vertex_t *dest);
 
+	void graph_delete(graph_t *graph);
+	void free_vertices(vertex_t *vl);
+	void free_edges(edge_t *el);
+
 
 #endif
