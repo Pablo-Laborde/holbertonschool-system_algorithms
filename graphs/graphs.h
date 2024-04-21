@@ -80,13 +80,20 @@
 	vertex_t *add_rec_vertex(vertex_t *vertex, size_t index, const char *str);
 	vertex_t *create_vertex(size_t index, const char *str);
 
-	int graph_add_edge(graph_t *graph, const char *src, const char *dest, edge_type_t type);
+	int graph_add_edge(graph_t *graph, const char *src
+			, const char *dest, edge_type_t type);
 	vertex_t *get_vertex(vertex_t *vertex, const char *str);
 	edge_t *ca_edge(edge_t *list, vertex_t *dest);
 
 	void graph_delete(graph_t *graph);
 	void free_vertices(vertex_t *vl);
 	void free_edges(edge_t *el);
+
+	size_t depth_first_traverse(const graph_t *graph
+				, void (*action)(const vertex_t *v, size_t depth));
+	size_t rec_traverse(vertex_t *vx
+			, void (*action)(const vertex_t *v, size_t depth)
+			, size_t *nv, size_t dp);
 
 
 #endif
