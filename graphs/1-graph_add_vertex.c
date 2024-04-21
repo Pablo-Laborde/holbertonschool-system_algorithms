@@ -40,11 +40,15 @@ vertex_t *add_rec_vertex(vertex_t *vertex, size_t index, const char *str)
 	if (vertex)
 	{
 		if (!strcmp(vertex->content, str))
+		{
 			return (NULL);
+		}
 		else
 		{
 			if (vertex->next)
+			{
 				return (add_rec_vertex(vertex->next, vertex->index + 1, str));
+			}
 			else
 			{
 				vertex->next = add_rec_vertex(vertex->next, vertex->index + 1, str);
