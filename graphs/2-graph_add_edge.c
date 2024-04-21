@@ -9,7 +9,8 @@
 * @type: edge_type_t
 * Return: int
 */
-int graph_add_edge(graph_t *graph, const char *src, const char *dest, edge_type_t type)
+int graph_add_edge(graph_t *graph, const char *src
+			, const char *dest, edge_type_t type)
 {
 	vertex_t *d = NULL, *s = NULL;
 	edge_t *one = NULL, *two = NULL;
