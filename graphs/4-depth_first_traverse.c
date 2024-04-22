@@ -15,7 +15,7 @@ size_t depth_first_traverse(const graph_t *graph
 
 	if (graph)
 	{
-		nv = malloc(sizeof(int) * graph->nb_vertices);
+		nv = malloc(sizeof(size_t) * graph->nb_vertices);
 		if (!nv)
 			return (0);
 		for (; i < graph->nb_vertices; i++)
