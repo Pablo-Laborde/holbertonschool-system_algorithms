@@ -16,4 +16,5 @@ heap_t *heap_create(int (*data_cmp)(void *, void *))
 	root->size = 0;
 	root->data_cmp = data_cmp;
 	root->root = NULL;
+	return (root);
 }
