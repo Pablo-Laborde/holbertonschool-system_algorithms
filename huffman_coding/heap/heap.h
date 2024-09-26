@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 /**
  * struct binary_tree_node_s - Binary tree node data structure
  *
