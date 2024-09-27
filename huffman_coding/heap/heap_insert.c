@@ -10,9 +10,7 @@
 binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 {
 	size_t pos = 0;
-	binary_tree_node_t	*node = NULL,
-						*parent = NULL,
-						*rn = NULL;
+	binary_tree_node_t	*node = NULL, *parent = NULL, *rn = NULL;
 
 	if (!heap || !data)
 		return (NULL);
