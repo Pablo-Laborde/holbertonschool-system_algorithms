@@ -11,7 +11,8 @@ binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 {
 	size_t pos = 0;
 	binary_tree_node_t	*node = NULL,
-						*parent = NULL;
+						*parent = NULL,
+						*rn = NULL;
 
 	if (!heap || !data)
 		return (NULL);
@@ -25,8 +26,8 @@ binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 	if (parent)
 		(pos % 2) ? (parent->right = node) : (parent->left = node);
 	(heap->size)++;
-	order_heap(heap, node);
-	return (node);
+	rn = order_heap(heap, node);
+	return (rn);
 }
 
 
@@ -53,41 +54,22 @@ binary_tree_node_t *get_parent(binary_tree_node_t *root, size_t pos)
  * order_heap- func
  * @heap: heap_t *
  * @node: binary_tree_node_t *
- * Return: void
+ * Return: binary_tree_node_t *
  */
-void order_heap(heap_t *heap, binary_tree_node_t *node)
+binary_tree_node_t *order_heap(heap_t *heap, binary_tree_node_t *node)
 {
-	binary_tree_node_t	*a = NULL, *b = NULL, *c = NULL, *d = NULL;
+	void *data_aux = NULL;
+	binary_tree_node_t	*n = NULL, *p = NULL;
 
-	a = node->parent;
-	c = node->left;
-	d = node->right;
-	if (!a)
-		heap->root = node;
-	else if (heap->data_cmp(a->data, node->data) > 0)
+	n = node;
+	p = node->parent;
+	while (p && (heap->data_cmp(p->data, n->data) > 0))
 	{
-		node->parent = a->parent;
-		if (a->left == node)
-		{
-			node->left = a;
-			node->right = a->right;
-		}
-		else
-		{
-			node->left = a->left;
-			node->right = a;
-		}
-		a->parent = node;
-		a->left = c;
-		a->right = d;
-		b = node->parent;
-		if (b)
-		{
-			if (b->left == a)
-				b->left = node;
-			else
-				b->right = node;
-		}
-		order_heap(heap, node);
+		data_aux = n->data;
+		n->data = p->data;
+		p->data = data_aux;
+		n = p;
+		p = n->parent;
 	}
+	return (n);
 }
