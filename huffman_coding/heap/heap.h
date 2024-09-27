@@ -36,7 +36,17 @@ typedef struct heap_s
 
 
 /* Functions */
-heap_t *heap_create(int (*data_cmp)(void *, void *));
-binary_tree_node_t *binary_tree_node(binary_tree_node_t *parent, void *data);
+
+	/* heap_create.c */
+		heap_t *heap_create(int (*data_cmp)(void *, void *));
+
+	/* binary_tree_node.c */
+		binary_tree_node_t *binary_tree_node(binary_tree_node_t *parent, void *data);
+
+	/* heap_insert.c */
+		binary_tree_node_t *heap_insert(heap_t *heap, void *data);
+		binary_tree_node_t *get_parent(binary_tree_node_t *root, size_t pos);
+		void order_heap(heap_t *heap, binary_tree_node_t *node);
+
 
 #endif
