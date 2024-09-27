@@ -57,11 +57,11 @@ binary_tree_node_t *get_parent(binary_tree_node_t *root, size_t pos)
  */
 void order_heap(heap_t *heap, binary_tree_node_t *node)
 {
-	binary_tree_node_t	*a = node->parent,
-						*b = NULL,
-						*c = node->left,
-						*d = node->right;
+	binary_tree_node_t	*a = NULL, *b = NULL, *c = NULL, *d = NULL;
 
+	a = node->parent;
+	c = node->left;
+	d = node->right;
 	if (!a)
 		heap->root = node;
 	else if (heap->data_cmp(a->data, node->data) > 0)
