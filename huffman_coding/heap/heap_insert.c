@@ -10,7 +10,7 @@
 binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 {
 	size_t pos = 0;
-	binary_tree_node_t	*node = NULL, *parent = NULL, *rn = NULL;
+	binary_tree_node_t *node = NULL, *parent = NULL, *rn = NULL;
 
 	if (!heap || !data)
 		return (NULL);
@@ -60,7 +60,8 @@ binary_tree_node_t *order_heap(heap_t *heap, binary_tree_node_t *node)
 	binary_tree_node_t	*n = NULL, *p = NULL;
 
 	n = node;
-	p = node->parent;
+	if (n)
+		p = n->parent;
 	while (p && (heap->data_cmp(p->data, n->data) > 0))
 	{
 		data_aux = n->data;

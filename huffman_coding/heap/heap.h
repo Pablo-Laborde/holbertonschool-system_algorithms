@@ -48,5 +48,10 @@ typedef struct heap_s
 		binary_tree_node_t *get_parent(binary_tree_node_t *root, size_t pos);
 		binary_tree_node_t *order_heap(heap_t *heap, binary_tree_node_t *node);
 
+	/* heap_extract.c */
+		void *heap_extract(heap_t *heap);
+		binary_tree_node_t *get_last_node(binary_tree_node_t *node, size_t pos);
+		void order_down(heap_t *h, binary_tree_node_t *node);
+
 
 #endif
