@@ -53,5 +53,9 @@ typedef struct heap_s
 		binary_tree_node_t *get_last_node(binary_tree_node_t *node, size_t pos);
 		void order_down(heap_t *h, binary_tree_node_t *node);
 
+	/* heap_delete.c */
+		void heap_delete(heap_t *heap, void (*free_data)(void *));
+		void free_tree(binary_tree_node_t *node, void (*free_data)(void *));
+
 
 #endif

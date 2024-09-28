@@ -27,8 +27,8 @@ void *heap_extract(heap_t *heap)
 		(p->right == last) ? (p->right = NULL) : (p->left = NULL);
 	}
 	(heap->size)--;
-	free(last);
 	order_down(heap, root);
+	free(last);
 	return (r_data);
 }
 
