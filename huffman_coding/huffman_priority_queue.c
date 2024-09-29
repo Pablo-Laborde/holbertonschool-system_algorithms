@@ -30,3 +30,15 @@ heap_t *huffman_priority_queue(char *data, size_t *freq, size_t size)
 	}
 	return (heap);
 }
+
+
+/**
+ * comapre_symbols- func
+ * @sym_a: symbol_t *
+ * @sym_b: symbol_t *
+ * Return: int
+ */
+int compare_symbols(symbol_t *sym_a, symbol_t *sym_b)
+{
+	return (sym_a->freq > sym_b->freq) ? 1 : 0;
+}
