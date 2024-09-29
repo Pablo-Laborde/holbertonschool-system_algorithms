@@ -62,13 +62,14 @@ binary_tree_node_t *order_heap(heap_t *heap, binary_tree_node_t *node)
 	n = node;
 	if (n)
 		p = n->parent;
-	while (p && (heap->data_cmp(p->data, n->data) > 0))
-	{
-		data_aux = n->data;
-		n->data = p->data;
-		p->data = data_aux;
-		n = p;
-		p = n->parent;
-	}
+	if (heap->data_cmp)
+		while (p && (heap->data_cmp(p->data, n->data) > 0))
+		{
+			data_aux = n->data;
+			n->data = p->data;
+			p->data = data_aux;
+			n = p;
+			p = n->parent;
+		}
 	return (n);
 }

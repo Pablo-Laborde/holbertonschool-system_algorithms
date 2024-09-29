@@ -11,7 +11,7 @@ binary_tree_node_t *binary_tree_node(binary_tree_node_t *parent, void *data)
 {
 	binary_tree_node_t *node = NULL;
 
-	node = malloc(sizeof(struct binary_tree_node_s));
+	node = malloc(sizeof(binary_tree_node_t));
 	if (!node)
 		return (NULL);
 	node->data = data;
