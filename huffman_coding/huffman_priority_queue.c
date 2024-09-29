@@ -15,7 +15,7 @@ heap_t *huffman_priority_queue(char *data, size_t *freq, size_t size)
 	symbol_t *sym = NULL;
 	binary_tree_node_t *node = NULL;
 
-	heap = heap_create(NULL);
+	heap = heap_create(&(compare_symbols));
 	if (!heap)
 		return (NULL);
 	for (; i < size; i++)
@@ -33,12 +33,16 @@ heap_t *huffman_priority_queue(char *data, size_t *freq, size_t size)
 
 
 /**
- * comapre_symbols- func
- * @sym_a: symbol_t *
- * @sym_b: symbol_t *
+ * compare_symbols- func
+ * @sym_a: void *
+ * @sym_b: void *
  * Return: int
  */
-int compare_symbols(symbol_t *sym_a, symbol_t *sym_b)
+int compare_symbols(void *a, void *b)
 {
+	symbol_t *sym_a = NULL, *sym_b = NULL;
+
+	sym_a = (symbol_t *)a;
+	sym_b = (symbol_t *)b;
 	return (sym_a->freq > sym_b->freq) ? 1 : 0;
 }

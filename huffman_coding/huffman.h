@@ -25,7 +25,7 @@ typedef struct symbol_s
 
 	/* huffman_priority_queue.c */
 		heap_t *huffman_priority_queue(char *data, size_t *freq, size_t size);
-		int compare_symbols(symbol_t *sym_a, symbol_t *sym_b);
+		int compare_symbols(void *a, void *b);
 		int huffman_extract_and_insert(heap_t *priority_queue);
 
 
