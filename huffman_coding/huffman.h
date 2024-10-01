@@ -27,9 +27,13 @@ typedef struct symbol_s
 		heap_t *huffman_priority_queue(char *data, size_t *freq, size_t size);
 		int compare_symbols(void *a, void *b);
 		int huffman_extract_and_insert(heap_t *priority_queue);
+		void binary_symbol_print(binary_tree_node_t *node, int lvl);
 
 	/* huffman_tree.c */
 		binary_tree_node_t *huffman_tree(char *data, size_t *freq, size_t size);
+
+	/* huffman_codes.c */
+		int huffman_codes(char *data, size_t *freq, size_t size);
 
 
 #endif

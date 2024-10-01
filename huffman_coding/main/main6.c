@@ -4,7 +4,7 @@
 #include "huffman.h"
 
 void binary_tree_print(const binary_tree_node_t *heap, int (*print_data)(char *, void *));
-void print_bin(binary_tree_node_t *node, int lvl);
+
 
 /**
  * nested_print - Prints a symbol structure stored in a nested node
@@ -45,30 +45,10 @@ int main(void)
 	priority_queue = huffman_priority_queue(data, freq, size);
 	if (!priority_queue)
 	{
-		fprintf(stderr, "Failed to create priority queue\n");
+		fprintf(stderr, "Failed to create pr	iority queue\n");
 		return (EXIT_FAILURE);
 	}
-	print_bin(priority_queue->root, 0);
 	binary_tree_print(priority_queue->root, nested_print);
 
 	return (EXIT_SUCCESS);
-}
-
-
-void print_bin(binary_tree_node_t *node, int lvl)
-{
-	int i = 0;
-	symbol_t *sym = NULL;
-
-	for (; i < lvl; i++)
-		printf("-");
-	if (node)
-	{
-		sym = (symbol_t *)node->data;
-		printf("(%c/%lu)\n", sym->data, sym->freq);
-		print_bin(node->left, lvl + 1);
-		print_bin(node->right, lvl + 1);
-	}
-	else
-		printf("(nill)\n");
 }

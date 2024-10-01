@@ -63,7 +63,7 @@ void order_down(heap_t *h, binary_tree_node_t *node)
 	void *data_aux = NULL;
 	binary_tree_node_t *a = NULL, *l = NULL, *r = NULL;
 
-	if (node && node->left)
+	if (h->data_cmp && node && node->left)
 	{
 		l = node->left;
 		r = node->right;
