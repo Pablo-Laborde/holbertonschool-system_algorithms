@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "heap/heap.h"
 
 /**
@@ -22,6 +23,7 @@ typedef struct symbol_s
 
 	/* symbol.c */
 		symbol_t *symbol_create(char data, size_t freq);
+		void free_symbol(void *sym);
 
 	/* huffman_priority_queue.c */
 		heap_t *huffman_priority_queue(char *data, size_t *freq, size_t size);
@@ -34,10 +36,13 @@ typedef struct symbol_s
 
 	/* huffman_codes.c */
 		int huffman_codes(char *data, size_t *freq, size_t size);
+		int is_leaf(binary_tree_node_t *node);
+		void decode_tree(binary_tree_node_t *node, char *buffer, size_t pos);
 
 	/* others */
 		void binary_tree_print(const binary_tree_node_t *heap, int (*print_data)(char *, void *));
 		int nested_print(char *buffer, void *data);
+		int symbol_print(char *buffer, void *data);
 
 
 #endif

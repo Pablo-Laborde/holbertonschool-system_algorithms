@@ -18,3 +18,15 @@ symbol_t *symbol_create(char data, size_t freq)
 	sym->freq = freq;
 	return (sym);
 }
+
+
+/**
+ * free_symbol- func
+ * @sym: void *
+ * Return: void
+ */
+void free_symbol(void *sym)
+{
+	if (sym)
+		free(sym);
+}
