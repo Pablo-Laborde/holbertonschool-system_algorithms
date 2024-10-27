@@ -20,10 +20,11 @@ nary_tree_t *nary_tree_insert(nary_tree_t *parent, char const *str)
 		return (NULL);
 	node->content = ns;
 	node->parent = parent;
+	node->nb_children = 0;
+	node->children = NULL;
 	if (parent)
 	{
 		node->next = parent->children;
-		node->children = NULL;
 		parent->children = node;
 		parent->nb_children++;
 	}
