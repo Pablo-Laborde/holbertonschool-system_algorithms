@@ -2,7 +2,7 @@
 
 
 /**
- * ary_tree_delete- func
+ * nary_tree_delete- func
  * @tree: nary_tree_t *
  * Return: void
  */
