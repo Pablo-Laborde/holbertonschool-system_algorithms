@@ -29,6 +29,10 @@ typedef struct nary_tree_s
 /* Functions */
 	nary_tree_t *nary_tree_insert(nary_tree_t *parent, char const *str);
 	void nary_tree_delete(nary_tree_t *tree);
+	size_t nary_tree_traverse(nary_tree_t const *root,
+					void (*action)(nary_tree_t const *node, size_t depth));
+	size_t ntt(nary_tree_t const *root, size_t d,
+				void (*action)(nary_tree_t const *node, size_t depth));
 
 
 #endif
