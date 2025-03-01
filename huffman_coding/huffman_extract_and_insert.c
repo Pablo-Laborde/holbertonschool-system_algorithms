@@ -2,7 +2,7 @@
 
 
 /**
- * huffman_extract_and_insert
+ * huffman_extract_and_insert - func
  * @priority_queue: heap_t *
  * Return: int
  */

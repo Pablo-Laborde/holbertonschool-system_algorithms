@@ -2,7 +2,7 @@
 
 
 /**
- * huffman?codes' func
+ * huffman_codes - func
  * @data: char *
  * @freq: size_t *
  * @size: size_t

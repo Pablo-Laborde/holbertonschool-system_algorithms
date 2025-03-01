@@ -36,8 +36,8 @@ heap_t *huffman_priority_queue(char *data, size_t *freq, size_t size)
 
 /**
  * compare_symbols- func
- * @sym_a: void *
- * @sym_b: void *
+ * @a: void *
+ * @b: void *
  * Return: int
  */
 int compare_symbols(void *a, void *b)
