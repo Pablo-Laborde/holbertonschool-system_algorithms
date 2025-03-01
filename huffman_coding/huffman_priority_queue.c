@@ -13,7 +13,7 @@ heap_t *huffman_priority_queue(char *data, size_t *freq, size_t size)
 	size_t i = 0;
 	heap_t *heap = NULL;
 	symbol_t *sym = NULL;
-	binary_tree_node_t *node = NULL, *sub_node= NULL;
+	binary_tree_node_t *node = NULL, *sub_node = NULL;
 
 	heap = heap_create(compare_symbols);
 	if (!heap)
@@ -46,7 +46,7 @@ int compare_symbols(void *a, void *b)
 
 	sym_a = (symbol_t *)((binary_tree_node_t *)a)->data;
 	sym_b = (symbol_t *)((binary_tree_node_t *)b)->data;
-	return (sym_a->freq > sym_b->freq) ? 1 : 0;
+	return ((sym_a->freq > sym_b->freq) ? 1 : 0);
 }
 
 
@@ -60,7 +60,7 @@ void binary_symbol_print(binary_tree_node_t *node, int lvl)
 {
 	int i = 0;
 	char c;
-	symbol_t * sym = NULL;
+	symbol_t *sym = NULL;
 
 	if (node)
 	{
