@@ -71,13 +71,17 @@ int rec_abn(const rb_tree_t *node)
 	int rvl, rvr;
 
 	if (!node)
+	{
 		return (0);
+	}
 	else
 	{
 		rvl = rec_abn(node->left);
 		rvr = rec_abn(node->right);
 		if (rvl != rvr)
+		{
 			return (0);
+		}
 		else
 			if (node->color == RED)
 				return (rvr);
