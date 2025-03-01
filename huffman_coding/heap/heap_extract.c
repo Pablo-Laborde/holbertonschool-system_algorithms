@@ -48,7 +48,7 @@ binary_tree_node_t *get_last_node(binary_tree_node_t *root, size_t pos)
 	if (pos == 1)
 		return (root);
 	aux = get_last_node(root, pos / 2);
-	return (pos % 2) ? (aux->right) : (aux->left);
+	return ((pos % 2) ? (aux->right) : (aux->left));
 }
 
 

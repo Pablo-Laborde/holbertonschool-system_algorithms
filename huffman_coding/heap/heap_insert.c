@@ -44,7 +44,7 @@ binary_tree_node_t *get_parent(binary_tree_node_t *root, size_t pos)
 	if (pos == 1)
 		return (root);
 	parent = get_parent(root, pos / 2);
-	return (pos % 2) ? (parent->right) : (parent->left);
+	return ((pos % 2) ? (parent->right) : (parent->left));
 }
 
 
