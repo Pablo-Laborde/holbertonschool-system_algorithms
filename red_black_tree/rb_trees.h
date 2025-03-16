@@ -2,6 +2,7 @@
 #define RB_TREES_H
 
 
+#include <stdio.h>
 #include <stdlib.h>
 
 
@@ -38,12 +39,22 @@ typedef struct rb_tree_s
 } rb_tree_t;
 
 
-
+/* 0-rb_tree_node.c */
 rb_tree_t *rb_tree_node(rb_tree_t *parent, int value, rb_color_t color);
+
+/* 1-rb_tree_is_valid.c */
 int rb_tree_is_valid(const rb_tree_t *tree);
 int rec_rbtv(const rb_tree_t *node);
 int rec_bst(const rb_tree_t *node);
 int rec_abn(const rb_tree_t *node);
+
+/* 2-rb_tree_insert */
+rb_tree_t *rb_tree_insert(rb_tree_t **tree, int value);
+rb_tree_t *rb_insert_node(rb_tree_t *node, int n);
+void rb_fix_violation(rb_tree_t *node);
+void rb_right_r(rb_tree_t *n);
+void rb_left_r(rb_tree_t *n);
+void rb_root(rb_tree_t **root, rb_tree_t *node);
 
 
 #endif
