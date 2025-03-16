@@ -56,5 +56,8 @@ void rb_right_r(rb_tree_t *n);
 void rb_left_r(rb_tree_t *n);
 void rb_root(rb_tree_t **root, rb_tree_t *node);
 
+/* 3-array_to_rb_tree.c */
+rb_tree_t *array_to_rb_tree(int *array, size_t size);
+
 
 #endif
