@@ -10,7 +10,7 @@
 size_t depth_first_traverse(const graph_t *graph
 			, void (*action)(const vertex_t *v, size_t depth))
 {
-	size_t dp = 0, rv = 0, *nv = NULL, i = 0;
+	size_t dp = 0, *nv = NULL, i = 0;
 	vertex_t *vx = NULL;
 
 	if (graph)
@@ -21,16 +21,10 @@ size_t depth_first_traverse(const graph_t *graph
 		for (; i < graph->nb_vertices; i++)
 			nv[i] = 1;
 		vx = graph->vertices;
-		while (vx)
-		{
-			dp = rec_traverse(vx, action, nv, 0);
-			if (dp > rv)
-				rv = dp;
-			vx = vx->next;
-		}
+		dp = rec_traverse(vx, action, nv, 0);
 		free(nv);
 	}
-	return (rv);
+	return (dp);
 }
 
 
