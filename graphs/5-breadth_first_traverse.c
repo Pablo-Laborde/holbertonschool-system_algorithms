@@ -10,7 +10,7 @@
 size_t breadth_first_traverse(const graph_t *graph
 			, void (*action)(const vertex_t *v, size_t depth))
 {
-	size_t dp = 0, *nv = NULL, i = 0;
+	size_t dp = 0, rv = 0, *nv = NULL, i = 0;
 	vertex_t *vx = NULL;
 
 	if (graph)
@@ -21,10 +21,19 @@ size_t breadth_first_traverse(const graph_t *graph
 		for (; i < graph->nb_vertices; i++)
 			nv[i] = 1;
 		vx = graph->vertices;
-		dp = rec_breadth(vx, action, nv, 0);
+		while (vx)
+		{
+			if (nv[vx->index])
+			{
+				dp = rec_breadth(vx, action, nv, 0);
+				if (dp > rv)
+					rv = dp;
+			}
+			vx = vx->next;
+		}
 		free(nv);
 	}
-	return (dp);
+	return (rv);
 }
 
 
