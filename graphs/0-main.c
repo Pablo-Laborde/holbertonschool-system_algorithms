@@ -12,16 +12,16 @@ void graph_display(const graph_t *graph);
  */
 int main(void)
 {
-    graph_t *graph;
+	graph_t *graph;
 
-    graph = graph_create();
-    if (!graph)
-    {
-        fprintf(stderr, "Failed to create graph\n");
-        return (EXIT_FAILURE);
-    }
+	graph = graph_create();
+	if (!graph)
+	{
+		fprintf(stderr, "Failed to create graph\n");
+		return (EXIT_FAILURE);
+	}
 
-    printf("Successfully created graph\n");
+	printf("Successfully created graph\n");
 
-    return (EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }

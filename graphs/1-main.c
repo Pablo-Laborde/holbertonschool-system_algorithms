@@ -12,39 +12,39 @@ void graph_display(const graph_t *graph);
  */
 int main(void)
 {
-    graph_t *graph;
+	graph_t *graph;
 
-    graph = graph_create();
-    if (!graph)
-    {
-        fprintf(stderr, "Failed to create graph\n");
-        return (EXIT_FAILURE);
-    }
+	graph = graph_create();
+	if (!graph)
+	{
+		fprintf(stderr, "Failed to create graph\n");
+		return (EXIT_FAILURE);
+	}
 
-    if (!graph_add_vertex(graph, "San Francisco"))
-    {
-        fprintf(stderr, "Failed to add vertex\n");
-        return (EXIT_FAILURE);
-    }
+	if (!graph_add_vertex(graph, "San Francisco"))
+	{
+		fprintf(stderr, "Failed to add vertex\n");
+		return (EXIT_FAILURE);
+	}
 
-    graph_display(graph);
+	graph_display(graph);
 
-    if (!graph_add_vertex(graph, "Seattle") ||
-        !graph_add_vertex(graph, "New York") ||
-        !graph_add_vertex(graph, "Miami") ||
-        !graph_add_vertex(graph, "Chicago") ||
-        !graph_add_vertex(graph, "Houston") ||
-        !graph_add_vertex(graph, "Las Vegas") ||
-        !graph_add_vertex(graph, "Boston"))
-    {
-        fprintf(stderr, "Failed to add vertex\n");
-        return (EXIT_FAILURE);
-    }
+	if (!graph_add_vertex(graph, "Seattle") ||
+		!graph_add_vertex(graph, "New York") ||
+		!graph_add_vertex(graph, "Miami") ||
+		!graph_add_vertex(graph, "Chicago") ||
+		!graph_add_vertex(graph, "Houston") ||
+		!graph_add_vertex(graph, "Las Vegas") ||
+		!graph_add_vertex(graph, "Boston"))
+	{
+		fprintf(stderr, "Failed to add vertex\n");
+		return (EXIT_FAILURE);
+	}
 
-    graph_display(graph);
+	graph_display(graph);
 
-    if (!graph_add_vertex(graph, "San Francisco"))
-        fprintf(stderr, "Failed to add \"San Francisco\"\n");
+	if (!graph_add_vertex(graph, "San Francisco"))
+		fprintf(stderr, "Failed to add \"San Francisco\"\n");
 
-    return (EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
