@@ -28,6 +28,7 @@ size_t depth_first_traverse(const graph_t *graph
 				rv = dp;
 			vx = vx->next;
 		}
+		free(nv);
 	}
 	return (rv);
 }
