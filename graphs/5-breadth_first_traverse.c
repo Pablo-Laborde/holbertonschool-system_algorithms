@@ -69,13 +69,9 @@ size_t rec_breadth(vertex_t *vx
 		aux = vx->edges;
 		while (aux)
 		{
-			if (nv[aux->dest->index])
-			{
-				nv[aux->dest->index] = 0;
-				a = rec_breadth(aux->dest, action, nv, dp + 1);
-				if (a > b)
-					b = a;
-			}
+			a = rec_breadth(aux->dest, action, nv, dp + 1);
+			if (a > b)
+				b = a;
 			aux = aux->next;
 		}
 		return ((b > dp) ? b : dp);
