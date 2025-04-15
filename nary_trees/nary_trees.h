@@ -34,6 +34,7 @@ typedef struct nary_tree_s
 	size_t ntt(nary_tree_t const *root, size_t d,
 				void (*action)(nary_tree_t const *node, size_t depth));
 	size_t nary_tree_diameter(nary_tree_t const *root);
+	size_t nodes_down(nary_tree_t *node);
 	int path_exists(nary_tree_t const *root, char const * const *path);
 	int cp(nary_tree_t const *root, char const * const *path);
 
