@@ -9,5 +9,6 @@
  */
 size_t nary_tree_diameter(nary_tree_t const *root)
 {
+	(void)root;
 	return (0);
 }
