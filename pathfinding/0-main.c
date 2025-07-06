@@ -31,6 +31,7 @@ static void print_free_path(queue_t *path)
  */
 int main(void)
 {
+	/*
 	char *map[21] = {
 		"111111111111111111111",
 		"101000000000001000001",
@@ -56,9 +57,17 @@ int main(void)
 	};
 	point_t start = { 0, 13 };
 	point_t target = { 5, 20 };
+	*/
+	char *map[3] = {
+		"000",
+		"000",
+		"000",
+	};
+	point_t start = { 2, 2};
+	point_t target = { 0, 0};
 	queue_t *path;
 
-	path = backtracking_array((char **)map, 21, 21, &start, &target);
+	path = backtracking_array((char **)map, 3, 3, &start, &target);
 	if (!path)
 	{
 		fprintf(stderr, "Failed to retrieve path\n");
