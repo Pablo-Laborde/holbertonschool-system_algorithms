@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <unistd.h>
 
@@ -30,6 +31,8 @@ typedef struct point_s
 /* Functions */
 queue_t *backtracking_array(char **map, int rows, int cols, point_t const
 	*start, point_t const *target);
+queue_t *backtracking_graph(graph_t *graph, vertex_t const *start,
+	vertex_t const *target);
 
 
 #endif
