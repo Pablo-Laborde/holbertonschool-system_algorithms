@@ -99,15 +99,17 @@ queue_t *backtracking_array(char **map, int rows, int cols, point_t const
 	q = queue_create();
 	if (!q)
 		return (NULL);
-	bt(q, cols, rows, start->x, start->y, map, target->x, target->y);
-	rq = queue_create();
-	if (!rq)
-		return (NULL);
-	p = dequeue(q);
-	while (p)
+	if (bt(q, cols, rows, start->x, start->y, map, target->x, target->y))
 	{
-		queue_push_front(rq, p);
+		rq = queue_create();
+		if (!rq)
+			return (NULL);
 		p = dequeue(q);
+		while (p)
+		{
+			queue_push_front(rq, p);
+			p = dequeue(q);
+		}
 	}
 	queue_delete(q);
 	return (rq);
