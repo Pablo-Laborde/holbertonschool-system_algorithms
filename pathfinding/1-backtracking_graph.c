@@ -39,7 +39,7 @@ int viq(queue_t *q, char *city)
 /**
 * btg - func
 * @q: queue_t *
-* @s: vertex_t *
+* @v: vertex_t *
 * @t: vertex_t *
 * Return: int
 */
@@ -70,9 +70,9 @@ int btg(queue_t *q, vertex_t *v, vertex_t *t)
 
 /**
 * backtracking_graph - func
-* @grapth: graph_t *
+* @graph: graph_t *
 * @start: vertex_t const *
-* @taget: vertex_t const *
+* @target: vertex_t const *
 * Return: queue_t *
 */
 queue_t *backtracking_graph(graph_t *graph, vertex_t const *start,
