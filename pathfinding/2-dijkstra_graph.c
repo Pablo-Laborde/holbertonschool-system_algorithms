@@ -2,6 +2,10 @@
 
 
 
+static unsigned int *weights;
+static vertex_t **prev_list;
+
+
 /**
 * addq - func
 * @q: queue_t *
@@ -30,14 +34,9 @@ void addq(queue_t *q, vertex_t *v)
 /**
 * proc_edges - func
 * @v: vertex_t *
-* @t: vertex_t *
-* @weights: unsigned int *
-* @prev_list: vertex_t **
 * @q: queue_t *
-* Return: int
 */
-int proc_edges(vertex_t *v, vertex_t *t, unsigned int *weights,
-	vertex_t **prev_list, queue_t *q)
+void proc_edges(vertex_t *v, queue_t *q)
 {
 	edge_t *edge = v->edges;
 
@@ -49,21 +48,17 @@ int proc_edges(vertex_t *v, vertex_t *t, unsigned int *weights,
 			weights[edge->dest->index] = (weights[v->index] + edge->weight);
 			addq(q, edge->dest);
 		}
-		if (edge->dest == t)
-			return (1);
 		edge = edge->next;
 	}
-	return (0);
 }
 
 
 /**
 * vtp - func
 * @q: queue_t *
-* @weights: unsigned int *
 * Return: vertex_t *
 */
-vertex_t *vtp(queue_t *q, unsigned int *weights)
+vertex_t *vtp(queue_t *q)
 {
 	vertex_t *a = NULL, *b = NULL, *c = NULL;
 
@@ -90,6 +85,32 @@ vertex_t *vtp(queue_t *q, unsigned int *weights)
 
 
 /**
+* gpd - func
+* @s: vertex_t *
+* @t: vertex_t *
+* @q: queue_t *
+* Return: int
+*/
+int gpd(vertex_t *s, vertex_t *t, queue_t *q)
+{
+	int rv = 0;
+	vertex_t *v = s;
+
+	while (v)
+	{
+		printf("Checking %s, distance from %s is %d\n", v->content, s->content,
+			weights[v->index]);
+		if (v != t)
+			proc_edges(v, q);
+		else
+			rv = 1;
+		v = vtp(q);
+	}
+	return (rv);
+}
+
+
+/**
 * dijkstra_graph - func
 * @graph: graph_t *
 * @start: vertex_t const *
@@ -99,8 +120,8 @@ vertex_t *vtp(queue_t *q, unsigned int *weights)
 queue_t *dijkstra_graph(graph_t *graph, vertex_t const *start,
 	vertex_t const *target)
 {
-	unsigned int *weights = NULL, rv = 0;
-	vertex_t **prev_list = NULL, *node = NULL, *v = NULL;
+	unsigned int rv = 0;
+	vertex_t *node = NULL;
 	queue_t *solution_queue = NULL, *q = NULL;
 
 	solution_queue = queue_create();
@@ -112,18 +133,7 @@ queue_t *dijkstra_graph(graph_t *graph, vertex_t const *start,
 	memset(prev_list, 0, graph->nb_vertices * sizeof(void *));
 	memset(weights, (unsigned int)(-1), graph->nb_vertices * sizeof(int));
 	weights[start->index] = 0;
-	v = (vertex_t *)start;
-	printf("Checking %s, distance from %s is %d\n", v->content,
-			start->content, weights[v->index]);
-	while (v)
-	{
-		if (rv)
-			break;
-		rv = proc_edges(v, (vertex_t *)target, weights, prev_list, q);
-		v = vtp(q, weights);
-		printf("Checking %s, distance from %s is %d\n", v->content,
-			start->content, weights[v->index]);
-	}
+	rv = gpd((vertex_t *)start, (vertex_t *)target, q);
 	if (rv)
 	{
 		node = (vertex_t *)target;
@@ -132,6 +142,11 @@ queue_t *dijkstra_graph(graph_t *graph, vertex_t const *start,
 			queue_push_front(solution_queue, strdup(node->content));
 			node = prev_list[node->index];
 		}
+	}
+	else
+	{
+		free(solution_queue);
+		solution_queue = NULL;
 	}
 	free(weights);
 	free(prev_list);
