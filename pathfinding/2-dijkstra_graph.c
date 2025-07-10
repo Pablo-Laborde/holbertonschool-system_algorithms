@@ -109,7 +109,7 @@ queue_t *dijkstra_graph(graph_t *graph, vertex_t const *start,
 	weights = malloc(sizeof(int) * graph->nb_vertices);
 	if (!solution_queue || !prev_list || !weights || !q)
 		return (NULL);
-	memset(prev_list, 0, graph->nb_vertices);
+	memset(prev_list, 0, graph->nb_vertices * sizeof(void *));
 	memset(weights, (unsigned int)(-1), graph->nb_vertices * sizeof(int));
 	weights[start->index] = 0;
 	v = (vertex_t *)start;
